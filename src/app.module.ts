@@ -6,6 +6,7 @@ import { CoursesModule } from './modules/courses/courses.module';
 import { OrdersModule } from './modules/orders/orders.module';
 import { EnrollmentsModule } from './modules/enrollments/enrollments.module';
 import { StreamModule } from './modules/stream/stream.module';
+import { DashboardModule } from './modules/dashboard/dashboard.module';
 
 @Module({
   imports: [
@@ -22,6 +23,7 @@ import { StreamModule } from './modules/stream/stream.module';
     OrdersModule,
     EnrollmentsModule,
     StreamModule,
+    DashboardModule,
   ],
 })
 export class AppModule {}

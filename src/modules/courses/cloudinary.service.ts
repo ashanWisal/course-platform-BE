@@ -7,7 +7,7 @@ export class CloudinaryService {
   async uploadVideo(filePath: string): Promise<{ url: string; public_id: string; duration: number; format: string }> {
     const result = await cloudinary.uploader.upload(filePath, {
       resource_type: 'video',
-      folder: 'devnest/videos',
+      folder: 'course-platform/videos',
       chunk_size: 6000000,
     });
 
@@ -22,7 +22,7 @@ export class CloudinaryService {
   async uploadImage(filePath: string): Promise<{ url: string; public_id: string }> {
     const result = await cloudinary.uploader.upload(filePath, {
       resource_type: 'image',
-      folder: 'devnest/thumbnails',
+      folder: 'course-platform/thumbnails',
     });
 
     return {
