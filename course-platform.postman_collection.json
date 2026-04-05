@@ -1,0 +1,439 @@
+{
+  "info": {
+    "_postman_id": "8927b6c0-6daa-4ed1-b1f6-5f3cfcde006e",
+    "name": "course-platform",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "42772465"
+  },
+  "item": [
+    {
+      "name": "auth",
+      "item": [
+        {
+          "name": "registration",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "// {\r\n//   \"name\": \"Ahsan Wisal\",\r\n//   \"email\": \"ahsan@test.com\",\r\n//   \"password\": \"123456\",\r\n//   \"role\": \"mentor\"\r\n// }\r\n\r\n{\r\n  \"name\": \"Ahsan learner\",\r\n  \"email\": \"ahsan+1@test.com\",\r\n  \"password\": \"123456\",\r\n  \"role\": \"learner\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3000/api/auth/register",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "auth",
+                "register"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Me",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2OWNmOTMzOTdhYTYzMzcxNTUzOGNmYmUiLCJlbWFpbCI6ImFoc2FuQHRlc3QuY29tIiwicm9sZSI6Im1lbnRvciIsImlhdCI6MTc3NTIxMzYxNSwiZXhwIjoxNzc1ODE4NDE1fQ.rgVGZlEsaVAe-MsVFtYplhwhW1qL4v5DwizLmDt1QLE",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/api/auth/me",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "auth",
+                "me"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "login",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "// {\r\n//   \"email\": \"ahsan@test.com\",\r\n//   \"password\": \"123456\"\r\n// }\r\n\r\n{\r\n  \"email\": \"ahsan+1@test.com\",\r\n  \"password\": \"123456\"\r\n}\r\n\r\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3000/api/auth/login",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "auth",
+                "login"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "courses",
+      "item": [
+        {
+          "name": "create course",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2OWNmOTMzOTdhYTYzMzcxNTUzOGNmYmUiLCJlbWFpbCI6ImFoc2FuQHRlc3QuY29tIiwicm9sZSI6Im1lbnRvciIsImlhdCI6MTc3NTIyMDExMSwiZXhwIjoxNzc1ODI0OTExfQ.Qk6-YKkvuxVFI13ZpePynOEIwCAalQIPNFBpW1vwZRo",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "multipart/form-data",
+                "type": "text",
+                "disabled": true
+              }
+            ],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "title",
+                  "value": "React Masterclas",
+                  "type": "text",
+                  "uuid": "dc64f4ab-3fe7-44ef-99ef-883058a10e81"
+                },
+                {
+                  "key": "description",
+                  "value": "Learn React from scratch",
+                  "type": "text",
+                  "uuid": "b21cdb1c-c5dd-41c5-be11-e824082b5043"
+                },
+                {
+                  "key": "category",
+                  "value": "Backend",
+                  "type": "text",
+                  "uuid": "0fbbbf81-b6fb-48da-8c5c-e6b1a885f815"
+                },
+                {
+                  "key": "tags",
+                  "value": "React,frontend,typescript",
+                  "type": "text",
+                  "uuid": "78200490-d88d-4bdb-936c-b2e6a9b47de2"
+                },
+                {
+                  "key": "price",
+                  "value": "40",
+                  "type": "text",
+                  "uuid": "21d2f5b1-ea06-4e5e-9cae-7f3c3c913091"
+                },
+                {
+                  "key": "video",
+                  "type": "file",
+                  "uuid": "5436ba50-9f32-4d73-b4a2-04de420ad51b",
+                  "src": "/D:/personal-projects/Screen Recording 2026-03-08 004816.mp4"
+                }
+              ]
+            },
+            "url": {
+              "raw": "http://localhost:3000/api/courses",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "courses"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "get courses",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"course_id\": \"69d015a2dc4643bcd832806e\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3000/api/courses",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "courses"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "orders",
+      "item": [
+        {
+          "name": "create-order",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2OWNmYzlhNDBhNGIxNmUwNjVhMzQ5NTMiLCJlbWFpbCI6ImFoc2FuKzFAdGVzdC5jb20iLCJyb2xlIjoibGVhcm5lciIsImlhdCI6MTc3NTI0NDgzMSwiZXhwIjoxNzc1ODQ5NjMxfQ.dQnCgK8kQD-PI9pHaYtbHm2CuHNDELhQPkrmKEevRIA",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "\r\n{\r\n  \"course_id\": \"69d015a2dc4643bcd832806e\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3000/api/orders",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "orders"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "confirm-order",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2OWNmYzlhNDBhNGIxNmUwNjVhMzQ5NTMiLCJlbWFpbCI6ImFoc2FuKzFAdGVzdC5jb20iLCJyb2xlIjoibGVhcm5lciIsImlhdCI6MTc3NTI0NDgzMSwiZXhwIjoxNzc1ODQ5NjMxfQ.dQnCgK8kQD-PI9pHaYtbHm2CuHNDELhQPkrmKEevRIA",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3000/api/orders/69d0174bdc4643bcd832808c/confirm",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "orders",
+                "69d0174bdc4643bcd832808c",
+                "confirm"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "my-orders",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2OWNmYzlhNDBhNGIxNmUwNjVhMzQ5NTMiLCJlbWFpbCI6ImFoc2FuKzFAdGVzdC5jb20iLCJyb2xlIjoibGVhcm5lciIsImlhdCI6MTc3NTI0NDgzMSwiZXhwIjoxNzc1ODQ5NjMxfQ.dQnCgK8kQD-PI9pHaYtbHm2CuHNDELhQPkrmKEevRIA",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/api/orders/my",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "orders",
+                "my"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "enrollments",
+      "item": [
+        {
+          "name": "my-enrollments",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2OWNmYzlhNDBhNGIxNmUwNjVhMzQ5NTMiLCJlbWFpbCI6ImFoc2FuKzFAdGVzdC5jb20iLCJyb2xlIjoibGVhcm5lciIsImlhdCI6MTc3NTI0NDgzMSwiZXhwIjoxNzc1ODQ5NjMxfQ.dQnCgK8kQD-PI9pHaYtbHm2CuHNDELhQPkrmKEevRIA",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/api/enrollments/my",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "enrollments",
+                "my"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "stream",
+      "item": [
+        {
+          "name": "New Request",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/api/stream/69d015a2dc4643bcd832806e?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2OWNmYzlhNDBhNGIxNmUwNjVhMzQ5NTMiLCJlbWFpbCI6ImFoc2FuKzFAdGVzdC5jb20iLCJyb2xlIjoibGVhcm5lciIsImlhdCI6MTc3NTI0NDgzMSwiZXhwIjoxNzc1ODQ5NjMxfQ.dQnCgK8kQD-PI9pHaYtbHm2CuHNDELhQPkrmKEevRIA",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "stream",
+                "69d015a2dc4643bcd832806e"
+              ],
+              "query": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2OWNmYzlhNDBhNGIxNmUwNjVhMzQ5NTMiLCJlbWFpbCI6ImFoc2FuKzFAdGVzdC5jb20iLCJyb2xlIjoibGVhcm5lciIsImlhdCI6MTc3NTI0NDgzMSwiZXhwIjoxNzc1ODQ5NjMxfQ.dQnCgK8kQD-PI9pHaYtbHm2CuHNDELhQPkrmKEevRIA"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "dashboard",
+      "item": [
+        {
+          "name": "learner-dashboard",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/api/dashboard/mentor",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "dashboard",
+                "mentor"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "mentor-dashaboard",
+          "request": {
+            "method": "GET",
+            "header": []
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
+}

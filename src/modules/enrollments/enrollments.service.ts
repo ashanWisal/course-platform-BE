@@ -13,20 +13,21 @@ export class EnrollmentsService {
   async getMyEnrollments(learnerId: string) {
     return this.enrollmentModel
       .find({ learner_id: new Types.ObjectId(learnerId) })
-      .populate('course_id', 'title thumbnail_url price video_duration')
+      .populate('course_id', 'title thumbnail_url price video_duration category')
       .sort({ createdAt: -1 });
   }
 
-  async updateProgress(enrollmentId: string, learnerId: string, watchProgressSeconds: number) {
-    const enrollment = await this.enrollmentModel.findById(enrollmentId);
-    if (!enrollment) throw new NotFoundException('Enrollment not found');
+async updateProgress(enrollmentId: string, learnerId: string, watchProgressSeconds: number) {
+  const enrollment = await this.enrollmentModel.findById(enrollmentId);
+  if (!enrollment) throw new NotFoundException('Enrollment not found');
 
-    if (enrollment.learner_id.toString() !== learnerId) {
-      throw new ForbiddenException('You do not own this enrollment');
-    }
-
-    enrollment.watch_progress_seconds = watchProgressSeconds;
-    enrollment.last_watched_at = new Date();
-    return enrollment.save();
+  // Fix: use Types.ObjectId comparison instead of string comparison
+  if (!enrollment.learner_id.equals(new Types.ObjectId(learnerId))) {
+    throw new ForbiddenException('You do not own this enrollment');
   }
+
+  enrollment.watch_progress_seconds = watchProgressSeconds;
+  enrollment.last_watched_at = new Date();
+  return enrollment.save();
+}
 }
