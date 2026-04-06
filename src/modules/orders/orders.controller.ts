@@ -18,6 +18,8 @@ import {
   ApiResponse,
   ApiTags,
 } from '@nestjs/swagger';
+import { UserRole } from '../../common/enums/user-role.enum';
+import { User } from '../users/schema/user.schema';
 
 @ApiTags('Orders')
 @ApiBearerAuth('JWT-auth')
@@ -27,7 +29,7 @@ export class OrdersController {
   constructor(private readonly ordersService: OrdersService) {}
 
   @Post()
-  @Roles('learner')
+  @Roles(UserRole.LEARNER)
   @ApiOperation({
     summary: 'Create a Stripe PaymentIntent and save order (Learner only)',
   })
@@ -46,7 +48,7 @@ export class OrdersController {
   }
 
   @Post(':id/confirm')
-  @Roles('learner')
+  @Roles(UserRole.LEARNER)
   @ApiOperation({
     summary: 'Confirm payment and create enrollment record (Learner only)',
   })
@@ -60,7 +62,7 @@ export class OrdersController {
   }
 
   @Get('my')
-  @Roles('learner')
+  @Roles(UserRole.LEARNER)
   @ApiOperation({ summary: 'Get learner order history (Learner only)' })
   @ApiResponse({ status: 200, description: 'Returns list of orders' })
   getMyOrders(@Request() req) {

@@ -17,6 +17,7 @@ import {
   ApiResponse,
   ApiTags,
 } from '@nestjs/swagger';
+import { UserRole } from '../../common/enums/user-role.enum';
 
 @ApiTags('Enrollments')
 @ApiBearerAuth('JWT-auth')
@@ -26,7 +27,7 @@ export class EnrollmentsController {
   constructor(private readonly enrollmentsService: EnrollmentsService) {}
 
   @Get('my')
-  @Roles('learner')
+  @Roles(UserRole.LEARNER)
   @ApiOperation({
     summary: 'Get learner enrolled courses with progress (Learner only)',
   })
@@ -43,7 +44,7 @@ export class EnrollmentsController {
   }
 
   @Patch(':id')
-  @Roles('learner')
+  @Roles(UserRole.LEARNER)
   @ApiOperation({ summary: 'Update video watch progress (Learner only)' })
   @ApiResponse({ status: 200, description: 'Progress updated successfully' })
   @ApiResponse({ status: 403, description: 'Forbidden — not your enrollment' })

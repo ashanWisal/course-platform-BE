@@ -9,6 +9,7 @@ import {
   ApiResponse,
   ApiTags,
 } from '@nestjs/swagger';
+import { UserRole } from '../../common/enums/user-role.enum';
 
 @ApiTags('Dashboard')
 @ApiBearerAuth('JWT-auth')
@@ -18,7 +19,7 @@ export class DashboardController {
   constructor(private readonly dashboardService: DashboardService) {}
 
   @Get('mentor')
-  @Roles('mentor')
+  @Roles(UserRole.MENTOR)
   @ApiOperation({
     summary:
       'Get mentor dashboard — revenue and sales per course (Mentor only)',
@@ -36,7 +37,7 @@ export class DashboardController {
   }
 
   @Get('learner')
-  @Roles('learner')
+  @Roles(UserRole.LEARNER)
   @ApiOperation({
     summary:
       'Get learner dashboard — enrolled courses with progress (Learner only)',
