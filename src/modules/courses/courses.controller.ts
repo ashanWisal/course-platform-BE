@@ -21,7 +21,7 @@ import { JwtAuthGuard } from '../../common/guards/jwt-auth.guard';
 import { RolesGuard } from '../../common/guards/roles.guard';
 import { Roles } from '../../common/decorators/roles.decorator';
 import { CurrentUser } from '../../common/decorators/current-user.decorator';
-import type { UserDocument } from '../users/schema/user.schema';
+import { User, type UserDocument } from '../users/schema/user.schema';
 import {
   ApiBearerAuth,
   ApiConsumes,
@@ -30,6 +30,7 @@ import {
   ApiResponse,
   ApiTags,
 } from '@nestjs/swagger';
+import { UserRole } from '../../common/enums/user-role.enum';
 
 @ApiTags('Courses')
 @Controller('courses')
@@ -38,7 +39,7 @@ export class CoursesController {
 
   @Post()
   @UseGuards(JwtAuthGuard, RolesGuard)
-  @Roles('mentor')
+  @Roles(UserRole.MENTOR)
   @ApiOperation({
     summary: 'Create a new course with video upload (Mentor only)',
   })
@@ -93,7 +94,7 @@ export class CoursesController {
 
   @Get('my')
   @UseGuards(JwtAuthGuard, RolesGuard)
-  @Roles('mentor')
+  @Roles(UserRole.MENTOR)
   @ApiBearerAuth('JWT-auth')
   @ApiOperation({ summary: 'Get mentor own courses (Mentor only)' })
   @ApiResponse({ status: 200, description: 'Returns mentor courses list' })
@@ -115,7 +116,7 @@ export class CoursesController {
 
   @Patch(':id')
   @UseGuards(JwtAuthGuard, RolesGuard)
-  @Roles('mentor')
+  @Roles(UserRole.MENTOR)
   @ApiBearerAuth('JWT-auth')
   @ApiOperation({ summary: 'Update course (Mentor owner only)' })
   @ApiResponse({ status: 200, description: 'Course updated successfully' })
@@ -131,7 +132,7 @@ export class CoursesController {
 
   @Delete(':id')
   @UseGuards(JwtAuthGuard, RolesGuard)
-  @Roles('mentor')
+  @Roles(UserRole.MENTOR)
   @ApiBearerAuth('JWT-auth')
   @ApiOperation({ summary: 'Delete course (Mentor owner only)' })
   @ApiResponse({ status: 200, description: 'Course deleted successfully' })
