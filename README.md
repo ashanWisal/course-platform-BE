@@ -1,6 +1,6 @@
-# DevNest API
+# CoursePlatform API
 
-Backend for DevNest — a developer-focused SaaS platform where users can create, sell, and enroll in video-based technical courses.
+Backend for CoursePlatform — a developer-focused SaaS platform where users can create, sell, and enroll in video-based technical courses.
 
 ## Tech Stack
 
